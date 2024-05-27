@@ -1,0 +1,279 @@
+/* Estilos globais */
+* {
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+}
+
+body {
+  background-color: #191919; /* Cor de fundo da página */
+}
+
+canvas {
+  color: white;
+  border: 3px solid white;
+}
+
+/* Estilos específicos para o contêiner principal */
+.conteiner-principal {
+  margin-top: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos específicos para o contêiner vermelho menor */
+.conteiner-superior {
+  position: absolute;
+  display: flex;
+  width: 1024px;
+  margin-bottom: 460px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-direction: row;
+}
+
+.nome-samuraiMack {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.nome-kenji {
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3px;
+  margin-right: 10px;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: right; /* Alinhamento do texto à direita */
+  width: 100%; /* Garante que o nome ocupe toda a largura */
+}
+
+/* Estilos específicos para a barra de vida do jogador e do inimigo */
+.barra-de-vida-conteiner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos específicos para a barra de vida do jogador */
+.samuraiMack-barra-de-vida {
+  position: relative;
+  width: 441px;
+  margin-right: 51px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid white;
+}
+
+.barra-de-vida-plano-de-fundo {
+  background-color: rgba(255, 0, 0, 0.4);
+  height: 30px;
+  width: 100%;
+}
+
+.vida-samuraiMack {
+  position: absolute;
+  background: #818cf8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Estilos específicos para a barra de vida do inimigo */
+.kenji-barra-de-vida {
+  position: relative;
+  width: 441px;
+  margin-left: 51px;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
+}
+
+.vida-kenji {
+  position: absolute;
+  background: #818cf8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.menu {
+  padding-bottom: 19.53px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Estilos específicos para o cronômetro */
+.cronometro {
+  background-color: black;
+  width: 102.4px;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: 4px solid white;
+  margin-top: 3px;
+}
+
+.conteiner-inferior {
+  position: absolute;
+  display: flex;
+  width: 1024px;
+  align-items: center;
+  padding: 15px;
+  flex-direction: row;
+  margin-top: 515px;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.recarga-conteiner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 127px;
+  height: 45px;
+  color: white;
+  border: 4px solid white;
+}
+
+.recarga-plano-de-fundo {
+  background-color: rgba(255, 0, 0, 0.4);
+  width: 120px;
+  height: 37px;
+}
+
+.recarga {
+  position: absolute;
+  background: #818cf8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.texto-ataque {
+  position: absolute;
+  top: 13px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  padding-left: 5px;
+}
+
+.texto-de-exibicao {
+  position: absolute;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  padding-left: 5px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25), 1px -1px 1px rgba(0, 0, 0, 0.25),
+    -1px 1px 1px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilos para o modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 50%; /* Posiciona o topo do modal no centro vertical */
+  left: 50%; /* Posiciona a esquerda do modal no centro horizontal */
+  transform: translate(-50%, -50%); /* Ajusta a posição após o posicionamento */
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-conteudo {
+  background-color: rgba(254, 254, 254, 0.8);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+}
+
+.modal-conteudo h2 {
+  padding-left: 14px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.modal-conteudo h3 {
+  padding-top: 20px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.modal-lutadores {
+  padding-top: 25px;
+}
+
+.comandos {
+  font-size: 12px;
+  padding-left: 24px;
+  text-align: justify;
+  line-height: 2;
+}
+
+.comandos strong {
+  color: #818cf8; /* Ou qualquer outra cor desejada */
+}
+
+.informacoes {
+  font-size: 11px;
+  padding-left: 24px;
+  text-align: center;
+  line-height: 2;
+}
+
+.informacoes strong {
+  color: #bb1a3b;
+}
+
+.fechar-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.fechar-modal:hover,
+.fechar-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

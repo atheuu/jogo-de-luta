@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo de Luta</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+  <body>
+    <!-- Contêiner principal -->
+    <div class="conteiner-principal">
+      <!-- Modal de controles -->
+      <div id="modal-controles" class="modal">
+        <div class="modal-conteudo">
+          <span class="fechar-modal">&times;</span>
+          <h2>Controles do Jogo</h2>
+          <p class="modal-lutadores"><strong>Samurai Mack:</strong></p>
+          <p class="comandos">Utilize a tecla <strong>S</strong> para atacar, tecla <strong>D</strong> para ir a direita, tecla <strong>A</strong> para ir a esquerda e a tecla <strong>W</strong> para pular.</p>
+          <p class="modal-lutadores"><strong>Kenji:</strong></p>
+          <p class="comandos">Utilize a tecla <strong>↓</strong> para atacar, tecla <strong>←</strong> para ir a direita, tecla <strong>→</strong> para ir a esquerda e a tecla <strong>↑</strong> para pular.</p>
+          <p class="modal-lutadores"><strong>Jogo:</strong></p>
+          <p class="comandos">Utilize a tecla <strong>Esc</strong> para abrir os controles e pausar o jogo, já a tecla <strong>Espaço</strong> para reiniciar o jogo (apenas se houver um vencedor ou o empate for declarado).</p>
+          <h3><strong></strong>Informações</h3>
+          <p class="informacoes">A direita temos a <strong>barra de vida</strong> do <strong>Samurai Mack</strong>, no canto inferior direito a <strong>barra de intervalos</strong> entre ataques (ao atacar ou levar um golpe o intervalo é iniciado), o mesmo para o <strong>Kenji</strong>, ao lado esquerdo da tela.</p>
+        </div>
+      </div>
+      <!-- Contêiner vermelho menor -->
+      <div class="conteiner-superior">
+        <!-- Barra de vida do Samurai Mack -->
+        <div class="barra-de-vida-conteiner">
+          <div class="nome-samuraiMack">Samurai Mack</div>
+          <div class="samuraiMack-barra-de-vida">
+            <div class="barra-de-vida-plano-de-fundo"></div>
+            <div id="vida-samuraiMack" class="vida-samuraiMack"></div>
+          </div>
+        </div>
+        <!-- Menu com cronometro e controles -->
+        <div class="menu">
+          <!-- Botão para abrir o modal -->
+          <button id="botao-abrir-modal">Controles</button>
+          <!-- Cronômetro -->
+          <div id="cronometro" class="cronometro">60</div>
+        </div>
+        <!-- Barra de vida do Kenji -->
+        <div class="barra-de-vida-conteiner">
+          <div class="nome-kenji">Kenji</div>
+          <div class="kenji-barra-de-vida">
+            <div class="barra-de-vida-plano-de-fundo"></div>
+            <div id="vida-kenji" class="vida-kenji"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Mensagem de exibição -->
+      <div id="texto-de-exibicao" class="texto-de-exibicao">Empate</div>
+      <!-- Contêiner inferior -->
+      <div class="conteiner-inferior">
+        <!-- Intervalo entre ataques do Samuraai Mack-->
+        <div class="recarga-conteiner">
+          <div class="atacar-samuraiMack">
+            <div class="recarga-plano-de-fundo"></div>
+            <div class="recarga" id="recarga-samuraiMack"></div>
+            <div class="texto-ataque">Ataque!</div>
+          </div>
+        </div>
+        <!-- Intervalo entre ataques do Kenji-->
+        <div class="recarga-conteiner">
+          <div class="atacar-kenji">
+            <div class="recarga-plano-de-fundo"></div>
+            <div class="recarga" id="recarga-kenji"></div>
+            <div class="texto-ataque">Ataque!</div>
+          </div>
+        </div>
+      </div>
+      <!-- Elemento canvas onde o jogo será desenhado -->
+      <canvas>
+        <img src="src/img/planoDeFundo.png" alt="">
+      </canvas>
+    </div>
+
+    <!-- Importação da biblioteca GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Importação de arquivos JavaScript -->
+    <script src="src/js/Atores.js"></script>
+    <script src="src/js/Utilitarios.js"></script>
+    <script src="src/js/Jogo.js"></script>
+  </body>
+</html>

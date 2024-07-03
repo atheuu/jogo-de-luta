@@ -1,9 +1,17 @@
-/* Estilos globais */
+/* Definindo a fonte 'Press Start 2P' usando a regra @font-face */
+@font-face {
+  font-family: 'Press Start 2P'; /* Nome da fonte para ser usada no CSS */
+  src: url('src/font/PressStart2P.ttf') format('truetype'); /* Caminho para o arquivo da fonte e seu formato */
+  font-weight: normal; /* Peso da fonte (normal) */
+  font-style: normal; /* Estilo da fonte (normal) */
+}
+
+/* Estilos globais aplicados a todos os elementos */
 * {
   box-sizing: border-box; /* Define que o padding e a borda são incluídos nas dimensões totais dos elementos */
-  font-family: "Press Start 2P", cursive; /* Define a fonte global como "Press Start 2P" ou uma fonte cursiva */
-  margin: 0; /* Remove a margem padrão */
-  padding: 0; /* Remove o padding padrão */
+  font-family: 'Press Start 2P', cursive; /* Define a fonte global como 'Press Start 2P' ou uma fonte cursiva como fallback */
+  margin: 0; /* Remove a margem padrão de todos os elementos */
+  padding: 0; /* Remove o padding padrão de todos os elementos */
 }
 
 html,

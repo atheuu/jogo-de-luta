@@ -1,7 +1,9 @@
 /* Definindo a fonte 'Press Start 2P' usando a regra @font-face */
 @font-face {
   font-family: 'Press Start 2P'; /* Nome da fonte para ser usada no CSS */
-  src: url('src/font/PressStart2P.ttf') format('truetype'); /* Caminho para o arquivo da fonte e seu formato */
+  src: url('../font/PressStart2P.woff2') format('woff2'), /* Caminho para o arquivo da fonte .woff2 e seu formato */
+       url('../font/PressStart2P.woff') format('woff'), /* Caminho para o arquivo da fonte .woff e seu formato */
+       url('../font/PressStart2P.ttf') format('truetype'); /* Caminho para o arquivo da fonte .ttf e seu formato */
   font-weight: normal; /* Peso da fonte (normal) */
   font-style: normal; /* Estilo da fonte (normal) */
 }

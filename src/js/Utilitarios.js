@@ -229,7 +229,7 @@ function diminuirCronometro(
         ),
       1000
     );
-    document.querySelector("#cronometro").innerHTML = tempoLimiteDeJogo;
+    document.querySelector("#tempo").innerHTML = tempoLimiteDeJogo;
   } else {
     // Se o tempo acabou ou se um lutador morreu, exibe o vencedor
     verificarVencedor(jogo.samuraiMack, jogo.kenji, jogo.idDoCronometro);

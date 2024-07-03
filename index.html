@@ -1,93 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <!-- Define o tipo de documento como HTML5 -->
+    <meta charset="UTF-8">
+    <!-- Define a largura da visualização para seguir a largura da tela do dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Descrição do conteúdo da página -->
+    <meta name="description" content="Jogo de luta com controles para dois jogadores.">
+    <!-- Define o autor da página -->
+    <meta name="author" content="Matheus 'atheu' Oliveira">
+    <!-- Título da página -->
     <title>Jogo de Luta</title>
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="src/css/styles.css" />
-  </head>
-  <body>
-    <!-- Contêiner principal -->
-    <div class="conteiner-principal">
-      <!-- Modal de controles -->
-      <div id="modal-controles" class="modal">
-        <div class="modal-conteudo">
-          <span class="fechar-modal">&times;</span>
-          <h2>Controles do Jogo</h2>
-          <p class="modal-lutadores"><strong>Samurai Mack:</strong></p>
-          <p class="comandos">Utilize a tecla <strong>S</strong> para atacar, tecla <strong>D</strong> para ir a direita, tecla <strong>A</strong> para ir a esquerda e a tecla <strong>W</strong> para pular.</p>
-          <p class="modal-lutadores"><strong>Kenji:</strong></p>
-          <p class="comandos">Utilize a tecla <strong>↓</strong> para atacar, tecla <strong>←</strong> para ir a direita, tecla <strong>→</strong> para ir a esquerda e a tecla <strong>↑</strong> para pular.</p>
-          <p class="modal-lutadores"><strong>Jogo:</strong></p>
-          <p class="comandos">Utilize a tecla <strong>Esc</strong> para abrir os controles e pausar o jogo, já a tecla <strong>Espaço</strong> para reiniciar o jogo (apenas se houver um vencedor ou o empate for declarado).</p>
-          <h3><strong></strong>Informações</h3>
-          <p class="informacoes">A direita temos a <strong>barra de vida</strong> do <strong>Samurai Mack</strong>, no canto inferior direito a <strong>barra de intervalos</strong> entre ataques (ao atacar ou levar um golpe o intervalo é iniciado), o mesmo para o <strong>Kenji</strong>, ao lado esquerdo da tela.</p>
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+    <!-- Interface de Controles (Modal) -->
+    <dialog id="interface" class="interface">
+        <div class="interface-conteudo">
+            <header>
+                <!-- Botão para fechar a interface -->
+                <button class="fechar-interface" aria-label="Fechar interface" onclick="document.getElementById('interface').close()">&times;</button>
+                <!-- Título da seção de controles -->
+                <h2>Controles do Jogo</h2>
+            </header>
+            <section>
+                <div class="controles-conteiner"> 
+                    <!-- Controles do Samurai Mack -->
+                    <article>
+                        <h3>Samurai Mack:</h3>
+                        <p class="comandos">Utilize a tecla <strong>S</strong> para atacar, tecla <strong>D</strong> para ir à direita, tecla <strong>A</strong> para ir à esquerda e a tecla <strong>W</strong> para pular.</p>
+                    </article>
+                    <!-- Controles do Kenji -->
+                    <article>
+                        <h3>Kenji:</h3>
+                        <p class="comandos">Utilize a tecla <strong>↓</strong> para atacar, tecla <strong>→</strong> para ir à direita, tecla <strong>←</strong> para ir à esquerda e o tecla <strong>↑</strong> para pular.</p>
+                    </article>
+                    <!-- Controles gerais do jogo -->
+                    <article>   
+                        <h3>Jogo:</h3>
+                        <p class="comandos">Utilize a tecla <strong>Esc</strong> para abrir os controles e pausar o jogo, já a tecla <strong>Espaço</strong> para reiniciar o jogo (apenas se houver um vencedor ou o empate for declarado).</p>
+                    </article>
+                </div>
+                <!-- Informações adicionais sobre o jogo -->
+                <article>
+                    <h2>Informações</h2>
+                    <p class="informacoes">A direita temos a <strong>barra de vida</strong> do <strong>Samurai Mack</strong>, no canto inferior direito a <strong>barra de intervalos</strong> entre ataques (ao atacar ou levar um golpe o intervalo é iniciado), o mesmo para o <strong>Kenji</strong>, ao lado esquerdo da tela.</p>
+                </article>
+            </section>
         </div>
-      </div>
-      <!-- Contêiner vermelho menor -->
-      <div class="conteiner-superior">
-        <!-- Barra de vida do Samurai Mack -->
-        <div class="barra-de-vida-conteiner">
-          <div class="nome-samuraiMack">Samurai Mack</div>
-          <div class="samuraiMack-barra-de-vida">
-            <div class="barra-de-vida-plano-de-fundo"></div>
-            <div id="vida-samuraiMack" class="vida-samuraiMack"></div>
-          </div>
-        </div>
-        <!-- Menu com cronometro e controles -->
-        <div class="menu">
-          <!-- Botão para abrir o modal -->
-          <button id="botao-abrir-modal">Controles</button>
-          <!-- Cronômetro -->
-          <div id="cronometro" class="cronometro">60</div>
-        </div>
-        <!-- Barra de vida do Kenji -->
-        <div class="barra-de-vida-conteiner">
-          <div class="nome-kenji">Kenji</div>
-          <div class="kenji-barra-de-vida">
-            <div class="barra-de-vida-plano-de-fundo"></div>
-            <div id="vida-kenji" class="vida-kenji"></div>
-          </div>
-        </div>
-      </div>
-      <!-- Mensagem de exibição -->
-      <div id="texto-de-exibicao" class="texto-de-exibicao">Empate</div>
-      <!-- Contêiner inferior -->
-      <div class="conteiner-inferior">
-        <!-- Intervalo entre ataques do Samuraai Mack-->
-        <div class="recarga-conteiner">
-          <div class="atacar-samuraiMack">
-            <div class="recarga-plano-de-fundo"></div>
-            <div class="recarga" id="recarga-samuraiMack"></div>
-            <div class="texto-ataque">Ataque!</div>
-          </div>
-        </div>
-        <!-- Intervalo entre ataques do Kenji-->
-        <div class="recarga-conteiner">
-          <div class="atacar-kenji">
-            <div class="recarga-plano-de-fundo"></div>
-            <div class="recarga" id="recarga-kenji"></div>
-            <div class="texto-ataque">Ataque!</div>
-          </div>
-        </div>
-      </div>
-      <!-- Elemento canvas onde o jogo será desenhado -->
-      <canvas>
-        <img src="src/img/planoDeFundo.png" alt="">
-      </canvas>
-    </div>
+    </dialog>
 
-    <!-- Importação da biblioteca GSAP -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- Importação de arquivos JavaScript -->
+    <!-- Conteúdo Principal -->
+    <main class="conteiner-principal">
+        <section class="conteiner-superior">
+            <div class="conteiner-lutador">
+                <!-- Nome do lutador Samurai Mack -->
+                <span class="nome-samurai">Samurai Mack</span>
+                <!-- Barra de saúde do Samurai Mack -->
+                <div class="barra-de-saude-samurai">
+                    <div id="vida-samuraiMack" class="barra-de-vida-samuraiMack"></div>
+                    <div class="plano-de-fundo-vida"></div>
+                </div>
+            </div>
+            <nav class="menu">
+                <!-- Botão para abrir a interface de controles -->
+                <button id="botao-abrir-interface" class="botao-controles" onclick="document.getElementById('interface').showModal()">Controles</button>
+                <!-- Caixa do cronômetro -->
+                <div class="caixa-cronometro">
+                    <time id="tempo" class="tempo">0</time>
+                </div>
+            </nav>
+            <div class="conteiner-lutador">
+                <!-- Nome do lutador Kenji -->
+                <span class="nome-kenji">Kenji</span>
+                <!-- Barra de saúde do Kenji -->
+                <div class="barra-de-saude-kenji">
+                    <div id="vida-kenji" class="barra-de-vida-kenji"></div>
+                    <div class="plano-de-fundo-vida"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Texto de exibição para o resultado do jogo -->
+        <section id="texto-de-exibicao" class="texto-de-exibicao">Empate!</section>
+
+        <!-- Seção inferior contendo os contêineres de recarga -->
+        <section class="conteiner-inferior">
+            <div class="recarga-conteiner esquerda">
+                <!-- Contêiner de recarga para o Samurai Mack -->
+                <div class="atacar-samuraiMack">
+                    <div class="recarga-plano-de-fundo"></div>
+                    <div class="recarga" id="recarga-samuraiMack"></div>
+                    <div class="texto-ataque">Ataque!</div>
+                </div>
+            </div>
+            <div class="recarga-conteiner direita">
+                <!-- Contêiner de recarga para o Kenji -->
+                <div class="atacar-kenji">
+                    <div class="recarga-plano-de-fundo"></div>
+                    <div class="recarga" id="recarga-kenji"></div>
+                    <div class="texto-ataque">Ataque!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Canvas para o plano de fundo do jogo -->
+        <canvas aria-label="Plano de fundo do jogo">
+            <img src="src/img/planoDeFundo.png" alt="Plano de Fundo do Jogo">
+        </canvas>
+    </main>
+
+    <!-- Importação da biblioteca GSAP para animações -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Importação de scripts personalizados -->
     <script src="src/js/Atores.js"></script>
     <script src="src/js/Utilitarios.js"></script>
     <script src="src/js/Jogo.js"></script>
-  </body>
+</body>
 </html>

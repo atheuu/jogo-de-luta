@@ -1,279 +1,333 @@
 /* Estilos globais */
 * {
-  box-sizing: border-box;
-  font-family: "Press Start 2P", cursive;
+  box-sizing: border-box; /* Define que o padding e a borda são incluídos nas dimensões totais dos elementos */
+  font-family: "Press Start 2P", cursive; /* Define a fonte global como "Press Start 2P" ou uma fonte cursiva */
+  margin: 0; /* Remove a margem padrão */
+  padding: 0; /* Remove o padding padrão */
+}
+
+html,
+body {
+  height: 100%; /* Define a altura de html e body como 100% da altura da viewport */
+  width: 100%; /* Define a largura de html e body como 100% da largura da viewport */
 }
 
 body {
-  background-color: #191919; /* Cor de fundo da página */
+  background-color: #191919; /* Define a cor de fundo da página como cinza muito escuro */
+  display: flex; /* Define o contêiner como um contêiner flexível */
+  justify-content: center; /* Alinha os itens filhos horizontalmente ao centro do contêiner */
+  align-items: center; /* Alinha os itens filhos verticalmente ao centro do contêiner */
 }
 
-canvas {
-  color: white;
-  border: 3px solid white;
+/* Container principal da interface, inicialmente escondido */
+.interface {
+  display: none; /* Esconde a interface por padrão */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo dentro da interface */
+  align-items: center; /* Centraliza verticalmente o conteúdo dentro da interface */
+  position: fixed; /* Fixa a posição da interface na tela */
+  z-index: 100; /* Garante que a interface esteja acima de outros elementos */
+  top: 0; /* Alinha a interface ao topo da tela */
+  left: 0; /* Alinha a interface à esquerda da tela */
+  width: 100%; /* Largura completa da tela */
+  height: 100%; /* Altura completa da tela */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente preto */
 }
+
+/* Conteúdo da interface */
+.interface-conteudo {
+  background-color: rgba(254, 254, 254, 0.8); /* Fundo semitransparente branco */
+  padding: 15px; /* Espaçamento interno de 20px */
+  border: 1px solid #888; /* Borda cinza */
+  width: 80%; /* Largura de 80% do container pai */
+  max-width: 650px; /* Largura máxima de 675px */
+  max-height: 475px; /* Largura máxima de 675px */
+  border-radius: 10px; /* Bordas arredondadas */
+  margin-top: 50px;
+  position: relative; /* Posicionamento relativo para elementos internos */
+}
+
+.controles-conteiner {
+  margin-bottom: 25px;
+}
+
+/* Estilo dos títulos dentro do conteúdo da interface */
+.interface-conteudo h2 {
+  font-size: 16px; /* Tamanho da fonte de 20px */
+  text-align: center; /* Centraliza o texto */
+  margin-top: 0; /* Remove a margem superior */
+  margin-bottom: 25px; /* Adiciona margem inferior de 25px */
+}
+
+.interface-conteudo h3 {
+  font-size: 12px; /* Tamanho da fonte de 20px */
+  margin-top: 25px; /* Adiciona margem superior de 25px */
+}
+
+/* Botão de fechar a interface */
+.fechar-interface {
+  color: #525252; /* Cor do texto */
+  position: absolute; /* Posiciona o botão de forma absoluta dentro do container */
+  top: 8px; /* Alinha o botão 10px do topo */
+  right: 5px; /* Alinha o botão 20px da direita */
+  font-size: 28px; /* Tamanho da fonte de 28px */
+  font-weight: bold; /* Fonte em negrito */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  border: none; /* Sem bordas */
+  background-color: transparent; /* Plano de fundo transparente */
+}
+
+/* Efeitos de hover e focus para o botão de fechar */
+.fechar-interface:hover,
+.fechar-interface:focus {
+  color: black; /* Muda a cor do texto para preto */
+}
+
+/* Estilo dos comandos */
+.comandos {
+  font-size: 10px; /* Tamanho da fonte de 12px */
+  padding-left: 20px; /* Espaçamento interno à esquerda de 20px */
+  padding-top: 15px; /* Espaçamento interno no topo de 20px */
+  margin-bottom: 15px; /* Margem inferior de 25px */
+  text-align: justify; /* Texto justificado */
+  line-height: 1.5; /* Altura da linha de 1.5 */
+}
+
+/* Cor do texto em negrito dentro de comandos */
+.comandos strong {
+  color: #818cf8; /* Cor roxa */
+}
+
+/* Estilo das informações */
+.informacoes {
+  margin-top: -10px; /* Subtrai margem superior em -10px */
+  font-size: 10px; /* Tamanho da fonte de 11px */
+  text-align: center; /* Texto centralizado */
+  line-height: 1.5; /* Altura da linha de 1.5 */
+}
+
+/* Cor do texto em negrito dentro de informações */
+.informacoes strong {
+  color: #bb1a3b; /* Cor vermelha */
+}
+
 
 /* Estilos específicos para o contêiner principal */
 .conteiner-principal {
-  margin-top: 60px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative; /* Define o contêiner do canvas como relativo para permitir posicionamento absoluto dos filhos */
 }
 
-/* Estilos específicos para o contêiner vermelho menor */
+/* Estilos para o canvas */
+canvas {
+  border: 3px solid white; /* Adiciona uma borda branca sólida de 3 pixels ao redor do canvas */
+  display: block; /* Remove qualquer espaço em branco abaixo do canvas */
+  width: 100%; /* Ajusta a largura do canvas para ocupar 100% do contêiner pai (conteiner-principal) */
+  height: 100%; /* Ajusta a altura do canvas para ocupar 100% do contêiner pai (conteiner-principal) */
+}
+
+/* Estilos para o contêiner superior */
 .conteiner-superior {
-  position: absolute;
-  display: flex;
-  width: 1024px;
-  margin-bottom: 460px;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  flex-direction: row;
+  display: flex; /* Ativa o modelo de layout flexbox para os elementos filhos */
+  justify-content: space-between; /* Distribui os elementos igualmente ao longo do contêiner */
+  position: absolute; /* Define o contêiner superior como absoluto para posicionamento relativo ao contêiner pai (conteiner-principal) */
+  top: 0; /* Posiciona o contêiner superior no topo do contêiner pai (conteiner-principal) */
+  left: 0; /* Posiciona o contêiner superior à esquerda do contêiner pai (conteiner-principal) */
+  width: 100%; /* Assegura que o contêiner superior ocupe 100% da largura do contêiner pai (conteiner-principal) */
+  padding: 20px; /* Adiciona preenchimento interno ao contêiner superior */
 }
 
-.nome-samuraiMack {
+/* Estilos para as barras de vida */
+.conteiner-lutador {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 3px;
-  margin-left: 10px;
-  color: white;
-  font-size: 14px;
-  margin-bottom: 5px;
-  text-align: left;
-  flex-grow: 1;
+  flex-direction: column;
+  width: 50%; /* Alterado para ocupar 50% do contêiner superior */
+  margin-top: 14px; /* Adiciona margem superior para centralizar as barras de vida ao cronômetro */
+  position: relative; /* Adiciona posição relativa ao contêiner da barra de vida */
+}
+
+.nome-samurai {
+  display: block; /* Faz com que as labels sejam exibidas em uma nova linha */
+  margin-bottom: 5px; /* Adiciona margem inferior para separar as labels */
+  color: white; /* Define a cor do texto como branco */
 }
 
 .nome-kenji {
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 3px;
-  margin-right: 10px;
-  color: white;
-  font-size: 14px;
-  margin-bottom: 5px;
-  text-align: right; /* Alinhamento do texto à direita */
-  width: 100%; /* Garante que o nome ocupe toda a largura */
+  display: block; /* Faz com que as labels sejam exibidas em uma nova linha */
+  margin-bottom: 5px; /* Adiciona margem inferior para separar as labels */
+  color: white; /* Define a cor do texto como branco */
+  text-align: end; /* Alinha o texto a direita do conteiner pai (.conteiner-lutador) */
 }
 
-/* Estilos específicos para a barra de vida do jogador e do inimigo */
-.barra-de-vida-conteiner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+/* Estilos para as barras de progresso */
+.barra-de-saude-samurai {
+  width: 100%; /* Define a largura das barras de progresso */
+  height: 30px; /* Define a altura das barras de progresso */
+  border-left: 3px solid white; /* Adiciona uma borda branca à caixa */
+  border-top: 3px solid white; /* Adiciona uma borda branca à caixa */
+  border-right: 0px solid white; /* Adiciona uma borda branca à caixa */
+  border-bottom: 3px solid white; /* Adiciona uma borda branca à caixa */
+  position: relative; /* Define a posição relativa para permitir que o plano de fundo seja posicionado dentro dela */
 }
 
-/* Estilos específicos para a barra de vida do jogador */
-.samuraiMack-barra-de-vida {
-  position: relative;
-  width: 441px;
-  margin-right: 51px;
-  display: flex;
-  justify-content: flex-end;
-  border-top: 4px solid white;
-  border-left: 4px solid white;
-  border-bottom: 4px solid white;
+/* Estilos para as barras de progresso */
+.barra-de-saude-kenji {
+  width: 100%; /* Define a largura das barras de progresso */
+  height: 30px; /* Define a altura das barras de progresso */
+  border-left: 0px solid white; /* Adiciona uma borda branca à caixa */
+  border-top: 3px solid white; /* Adiciona uma borda branca à caixa */
+  border-right: 3px solid white; /* Adiciona uma borda branca à caixa */
+  border-bottom: 3px solid white; /* Adiciona uma borda branca à caixa */
+  position: relative; /* Define a posição relativa para permitir que o plano de fundo seja posicionado dentro dela */
 }
 
-.barra-de-vida-plano-de-fundo {
-  background-color: rgba(255, 0, 0, 0.4);
-  height: 30px;
-  width: 100%;
+/* Estilos para o plano de fundo da barra de progresso */
+.barra-de-vida-samuraiMack {
+  width: 100%; /* Define a largura igual à largura da barra de progresso */
+  height: 100%; /* Define a altura igual à altura da barra de progresso */
+  background-color: #818cf8; /* Cor de fundo para o plano de fundo da barra de progresso */
+  position: absolute; /* Adiciona posição absoluta ao plano de fundo */
+  top: 0; /* Alinha o topo do plano de fundo com o topo da barra de progresso */
+  right: 0; /* Alinha a esquerda do plano de fundo com a esquerda da barra de progresso */
+  z-index: 1; /* Define uma camada inferior para o plano de fundo */
 }
 
-.vida-samuraiMack {
-  position: absolute;
-  background: #818cf8;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
+.barra-de-vida-kenji {
+  width: 100%; /* Define a largura igual à largura da barra de progresso */
+  height: 100%; /* Define a altura igual à altura da barra de progresso */
+  background-color: #818cf8; /* Cor de fundo para o plano de fundo da barra de progresso */
+  position: absolute; /* Adiciona posição absoluta ao plano de fundo */
+  top: 0; /* Alinha o topo do plano de fundo com o topo da barra de progresso */
+  left: 0; /* Alinha a esquerda do plano de fundo com a esquerda da barra de progresso */
+  z-index: 1; /* Define uma camada inferior para o plano de fundo */
 }
 
-/* Estilos específicos para a barra de vida do inimigo */
-.kenji-barra-de-vida {
-  position: relative;
-  width: 441px;
-  margin-left: 51px;
-  border-top: 4px solid white;
-  border-bottom: 4px solid white;
-  border-right: 4px solid white;
+/* Estilos para o plano de fundo da barra de progresso */
+.plano-de-fundo-vida {
+  width: 100%; /* Define a largura igual à largura da barra de progresso */
+  height: 100%; /* Define a altura igual à altura da barra de progresso */
+  background-color: #AF414F; /* Cor de fundo para o plano de fundo da barra de progresso */
+  position: absolute; /* Adiciona posição absoluta ao plano de fundo */
+  top: 0; /* Alinha o topo do plano de fundo com o topo da barra de progresso */
+  left: 0; /* Alinha a esquerda do plano de fundo com a esquerda da barra de progresso */
+  z-index: 0; /* Define uma camada inferior para o plano de fundo */
 }
 
-.vida-kenji {
-  position: absolute;
-  background: #818cf8;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
+/* Estilos para a div de menu */
 .menu {
-  padding-bottom: 19.53px;
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 100px; /* Alterado para ocupar 100 pixels do contêiner superior */
+  display: flex; /* Ativa o modelo de layout flexbox para os elementos filhos */
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Centraliza os elementos horizontalmente */
+  gap: 4px;
 }
 
-/* Estilos específicos para o cronômetro */
-.cronometro {
-  background-color: black;
-  width: 102.4px;
-  height: 50px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border: 4px solid white;
-  margin-top: 3px;
+/* Estilos para o botão de controles */
+.botao-controles {
+  background-color: #efefef; /* Define o fundo do botão como transparente */
+  border: none; /* Remove a borda do botão */
+  padding: 2.5px; /* Define um espaçamento interno de 2 pixels */
+  padding-top: 4px; /* Ajuste para centralizar o texto devido ao espaçamento da fonte */
+  padding-right: 0px; /* Ajuste para centralizar o texto devido ao espaçamento da fonte */
+  color: black; /* Define a cor do texto como branco */
+  font-size: 14px; /* Define o tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para uma mão quando o usuário passa sobre o botão */
 }
 
-.conteiner-inferior {
-  position: absolute;
-  display: flex;
-  width: 1024px;
-  align-items: center;
-  padding: 15px;
-  flex-direction: row;
-  margin-top: 515px;
-  justify-content: space-between;
-  margin-bottom: 15px;
+/* Estilos para a caixa do cronômetro */
+.caixa-cronometro {
+  width: 100px; /* Define a largura da caixa do cronômetro */
+  height: 50px; /* Define a altura da caixa do cronômetro */
+  background-color: black; /* Define o fundo da caixa como preto */
+  border: 3px solid white; /* Adiciona uma borda branca à caixa */
+  display: flex; /* Ativa o modelo de layout flexbox */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo */
+  align-items: center; /* Centraliza verticalmente o conteúdo */
 }
 
-.recarga-conteiner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 127px;
-  height: 45px;
-  color: white;
-  border: 4px solid white;
-}
-
-.recarga-plano-de-fundo {
-  background-color: rgba(255, 0, 0, 0.4);
-  width: 120px;
-  height: 37px;
-}
-
-.recarga {
-  position: absolute;
-  background: #818cf8;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.texto-ataque {
-  position: absolute;
-  top: 13px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  width: 100%;
-  padding-left: 5px;
+/* Estilos para o tempo dentro do cronômetro */
+.tempo {
+  color: white; /* Define a cor do texto como branco */
+  font-size: 16px; /* Define o tamanho da fonte */
 }
 
 .texto-de-exibicao {
-  position: absolute;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  padding-left: 5px;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25), 1px -1px 1px rgba(0, 0, 0, 0.25),
-    -1px 1px 1px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(0, 0, 0, 0.25);
+  position: absolute; /* Define o posicionamento do elemento como absoluto em relação ao contêiner pai. */
+  top: 50%; /* Move o elemento 50% para baixo a partir do topo do contêiner pai. */
+  left: 50%; /* Move o elemento 50% para a direita a partir da esquerda do contêiner pai. */
+  padding-left: 5px; /* Adiciona preenchimento interno para ajustar a centralização devido a fonte */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Move o elemento para cima e para a esquerda 50% da sua própria altura e largura, centralizando-o. */
+  font-size: 18px; /* Define o tamanho da fonte */
+  color: white; /* Define a cor do texto como branca. */
+  text-shadow: 4px 4px rgba(0, 0, 0, 0.3),
+    /* Aplica uma sombra de texto no canto inferior esquerdo com uma leve transparência. */
+      4px 4px 4px rgba(0, 0, 0, 0.3); /* Aplica uma sombra de texto no canto inferior direito com uma leve transparência. */
+  display: none; /* Esconde o texto por padrão */
 }
 
-/* Estilos para o modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  top: 50%; /* Posiciona o topo do modal no centro vertical */
-  left: 50%; /* Posiciona a esquerda do modal no centro horizontal */
-  transform: translate(-50%, -50%); /* Ajusta a posição após o posicionamento */
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+/* Estilos para o contêiner inferior */
+.conteiner-inferior {
+  position: absolute; /* Define o contêiner inferior como absoluto para posicionamento relativo ao contêiner pai (conteiner-principal) */
+  bottom: 0; /* Posiciona o contêiner inferior na parte inferior do contêiner pai (conteiner-principal) */
+  left: 0; /* Posiciona o contêiner inferior à esquerda do contêiner pai (conteiner-principal) */
+  width: 100%; /* Assegura que o contêiner inferior ocupe 100% da largura do contêiner pai (conteiner-principal) */
+  padding: 10px; /* Adiciona preenchimento interno ao contêiner inferior */
+  display: flex; /* Define o layout flexível para o contêiner inferior */
+  justify-content: space-between; /* Distribui os itens uniformemente com espaço igual entre eles */
+  align-items: center; /* Alinha os itens ao centro verticalmente */
 }
 
-.modal-conteudo {
-  background-color: rgba(254, 254, 254, 0.8);
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
+/* Estilos para os contêineres de recarga */
+.recarga-conteiner {
+  position: relative; /* Define o contêiner de recarga como relativo para posicionamento de seus filhos */
+  display: flex; /* Define o layout flexível para o contêiner de recarga */
+  align-items: center; /* Alinha os itens ao centro verticalmente */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  width: 128px; /* Define a largura do contêiner de recarga */
+  height: 45px; /* Define a altura do contêiner de recarga */
+  color: white; /* Define a cor do texto dentro do contêiner de recarga */
+  border: 4px solid white; /* Define uma borda branca ao redor do contêiner de recarga */
 }
 
-.modal-conteudo h2 {
-  padding-left: 14px;
-  text-align: center;
-  margin-top: 0;
+/* Estilos específicos para o contêiner de recarga à esquerda */
+.recarga-conteiner.esquerda {
+  margin-left: 0; /* Remove qualquer margem à esquerda */
 }
 
-.modal-conteudo h3 {
-  padding-top: 20px;
-  text-align: center;
-  margin-top: 0;
+/* Estilos específicos para o contêiner de recarga à direita */
+.recarga-conteiner.direita {
+  margin-right: 0; /* Remove qualquer margem à direita */
 }
 
-.modal-lutadores {
-  padding-top: 25px;
+/* Estilos para o plano de fundo da recarga */
+.recarga-plano-de-fundo {
+  background-color: rgba(255, 0, 0, 0.4); /* Define uma cor de fundo vermelha semi-transparente */
+  width: calc(128px - 8px); /* Calcula a largura desconsiderando as bordas */
+  height: calc(45px - 8px); /* Calcula a altura desconsiderando as bordas */
 }
 
-.comandos {
-  font-size: 12px;
-  padding-left: 24px;
-  text-align: justify;
-  line-height: 2;
+/* Estilos para a barra de recarga */
+.recarga {
+  position: absolute; /* Define a barra de recarga como absoluta para preenchimento completo do contêiner de recarga */
+  background: #818cf8; /* Define a cor de fundo da barra de recarga */
+  top: 0; /* Posiciona a barra de recarga no topo */
+  right: 0; /* Posiciona a barra de recarga à direita */
+  bottom: 0; /* Posiciona a barra de recarga na parte inferior */
+  left: 0; /* Posiciona a barra de recarga à esquerda */
+  width: 100%; /* Assegura que a barra de recarga ocupe 100% da largura do contêiner de recarga */
 }
 
-.comandos strong {
-  color: #818cf8; /* Ou qualquer outra cor desejada */
-}
-
-.informacoes {
-  font-size: 11px;
-  padding-left: 24px;
-  text-align: center;
-  line-height: 2;
-}
-
-.informacoes strong {
-  color: #bb1a3b;
-}
-
-.fechar-modal {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.fechar-modal:hover,
-.fechar-modal:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+/* Estilos para o texto de ataque */
+.texto-ataque {
+  position: absolute; /* Define o texto de ataque como absoluto para posicionamento preciso */
+  top: 13px; /* Posiciona o texto 13px a partir do topo */
+  right: 0; /* Posiciona o texto à direita */
+  bottom: 0; /* Posiciona o texto na parte inferior */
+  left: 0; /* Posiciona o texto à esquerda */
+  width: 100%; /* Assegura que o texto ocupe 100% da largura do contêiner */
+  color: white; /* Define a cor do texto */
+  font-size: 14px; /* Define o tamanho da fonte do texto */
+  text-align: center; /* Centraliza o texto horizontalmente */
+  padding-left: 5px; /* Adiciona preenchimento à esquerda do texto */
 }

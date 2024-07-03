@@ -21,9 +21,9 @@ class Jogo {
     this.modalAberto = false; // Indica se o modal está aberto
 
     // Variveis do modal
-    this.modal = document.getElementById("modal-controles");
-    this.btnAbrirModal = document.getElementById("botao-abrir-modal");
-    this.spanFecharModal = document.getElementsByClassName("fechar-modal")[0];
+    this.modal = document.getElementById("interface");
+    this.btnAbrirModal = document.getElementById("botao-abrir-interface");
+    this.spanFecharModal = document.getElementsByClassName("fechar-interface")[0];
 
     // Criação do cenário do jogo
     this.planoDeFundo = new Ator({
@@ -145,8 +145,8 @@ class Jogo {
     // Função para gerenciar eventos de teclado
     const gerenciarTeclado = (evento) => {
       this.teclasPressionadas[evento.key] = evento.type === "keydown"; // Registra a tecla pressionada
+      // console.log(`Tecla pressionada: ${evento.key}`); // Exibe qual tecl está sendo pressionada
     };
-
     // Adiciona event listeners para gerenciar o teclado
     window.addEventListener("keydown", gerenciarTeclado);
     window.addEventListener("keyup", gerenciarTeclado);
@@ -192,7 +192,7 @@ class Jogo {
     }
     // Exibe o modal alterando a visibilidade
     this.modalAberto = true; // Atualiza a variável de controle para indicar que o modal está aberto
-    this.modal.style.display = "block"; // Altere o estilo do modal para exibir
+    this.modal.style.display = "flex"; // Altere o estilo do modal para exibir
   }
 
   fecharModal() {
@@ -328,7 +328,7 @@ class Jogo {
     this.tempoEsgotado = false;
     this.vencedorVerificado = false;
     document.querySelector("#texto-de-exibicao").style.display = "none"; // Esconde o texto de exibição
-    document.querySelector("#cronometro").innerHTML = this.tempoLimiteDeJogo; // Reinicializa o cronômetro
+    document.querySelector("#tempo").innerHTML = this.tempoLimiteDeJogo; // Reinicializa o cronômetro
     diminuirCronometro(
       this.tempoLimiteDeJogo,
       this.idDoCronometro,
